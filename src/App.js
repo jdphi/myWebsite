@@ -1,5 +1,6 @@
 import React from 'react';
-import Home from './home';
+import Home from './Home';
+import CatAPI from './catapi';
 import WeatherAPI from './weatherapi';
 import DogAPI from './dogapi';
 import NewsAPI from './newsAPI';
@@ -18,6 +19,9 @@ function App() {
               <Link to="/weather/">Weather</Link>
             </li>
             <li>
+              <Link to="/catapi/">Cat API</Link>
+            </li>
+            <li>
               <Link to="/dogapi/">Dog API</Link>
             </li>
             <li>
@@ -30,8 +34,9 @@ function App() {
           <Route path="/weather/" element={<WeatherAPI />} />
           <Route path="/dogapi/" element={<DogAPI />} />
           <Route path="/news/" element={<NewsAPI />} />
+          <Route path="/catapi/" element={<CatAPI />} />
         </Routes>
-      </div>
+       </div>
     </Router>
   );
 }

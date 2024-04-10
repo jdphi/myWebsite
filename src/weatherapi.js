@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 function WeatherAPI() {
     const [zipCode, setZipCode] = useState('');
     const [countryCode, setCountryCode] = useState('');
-    const apiKey = 'bcb29820de7b59e635ce8d6ac71321011';
+    const [locationData, setLocationData] = useState(null); // Added state to store the API response
+    const apiKey = 'cb29820de7b59e635ce8d6ac71321011'
+    
+    //const apiKey = 'b21c83fb0e35b969b377f998ad8a46ea';
 
     //function to fetch data from the api
     const fetchZipData = async () => {
@@ -15,6 +18,7 @@ function WeatherAPI() {
             const url = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${apiKey}`
             const response = await fetch(url);
             const data = await response.json();
+            setLocationData(data); // Store the API response in state
         } catch (err) {
             console.error("Failed to fetch zip code:", err);
             alert('Failed to fetch zip code' + err.message);
@@ -36,6 +40,16 @@ function WeatherAPI() {
                 onChange={(e) => setCountryCode(e.target.value)}
             />
             <button onClick={fetchZipData}>Look Up Weather</button>
+         {/* Display the fetched data */}
+         {locationData && (
+                <div>
+                    <p>Latitude: {locationData.lat}</p>
+                    <p>Longitude: {locationData.lon}</p>
+                    <p>Zip Code: {locationData.zip}</p>
+                    <p>City Name: {locationData.name}</p>
+                    <p>Country: {locationData.country}</p>
+                </div>
+            )}
         </div>
     )
 }
