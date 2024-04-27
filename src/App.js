@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './Home';
+import Home from './home';
 import CatAPI from './catapi';
 import WeatherAPI from './weatherapi';
 import DogAPI from './dogapi';
