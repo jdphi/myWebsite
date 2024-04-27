@@ -66,3 +66,4 @@ function WeatherAPI() {
 }
 
 export default WeatherAPI;
+// documentation https://openweathermap.org/current

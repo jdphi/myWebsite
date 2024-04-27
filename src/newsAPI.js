@@ -4,22 +4,24 @@ function NewsAPI() {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        const apiKey = 'YOUR_API_KEY_HERE'; // Replace with your actual API key
-        const query = 'technology'; // Example query
-        const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}`;
+        const apiKey = '56e41e2dd3624570960849c99a6ed5df'; // Replace with your actual API key
+        const url = `https://newsapi.org/v2/everything?q=technology&apiKey=${apiKey}`;
 
         const fetchArticles = async () => {
             try {
                 const response = await fetch(url);
                 const data = await response.json();
                 setArticles(data.articles);
+                if (data.articles.length > 0) {
+                    console.log("First article's source ID:", data.articles[0].source.id); // Accessing the id
+                }
             } catch (err) {
                 console.error('Failed to fetch articles:', err);
             }
         };
 
         fetchArticles();
-    }, []); // Empty dependency array means this effect runs once on mount
+    }, []); // Dependency array is empty, so this effect runs once on mount
 
     return (
         <div>
@@ -29,6 +31,8 @@ function NewsAPI() {
                     <h2>{article.title}</h2>
                     <p>{article.description}</p>
                     <div>{article.content}</div>
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
+                    <img src={article.urlToImage} alt={article.title}/>
                 </div>
             ))}
         </div>
