@@ -4,6 +4,7 @@ import CatAPI from './catapi';
 import WeatherAPI from './weatherapi';
 import DogAPI from './dogapi';
 import NewsAPI from './newsAPI';
+import JokeAPI from './jokeapi';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
             <li>
               <Link to="/news/">News API</Link>
             </li>
+            <li>
+              <Link to="/joke/">Joke API</Link>
+            </li>
           </ul>
         </nav>
         <Routes>
@@ -35,6 +39,7 @@ function App() {
           <Route path="/dogapi/" element={<DogAPI />} />
           <Route path="/news/" element={<NewsAPI />} />
           <Route path="/catapi/" element={<CatAPI />} />
+          <Route path="/joke/" element={<JokeAPI />}/>
         </Routes>
        </div>
     </Router>
