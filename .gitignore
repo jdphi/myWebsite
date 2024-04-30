@@ -153,4 +153,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#python
+.venv
+.env
+
 >>>>>>> 0e5551f8bce0c6b5d9e5d438ccbb5d5a87fb4644
+
