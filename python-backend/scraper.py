@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 #Initializes CORS support for your Flask app, allowing requests from any domain.
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 #This decorator ensures that CORS headers are added to every response, not just those coming from successful requests.
 @app.after_request

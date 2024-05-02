@@ -6,7 +6,7 @@ function WebScraper() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:5001/scrape?url=${encodeURIComponent(url)}`);
+            const response = await fetch(`http://192.168.50.80:5001/scrape?url=${encodeURIComponent(url)}`);
             const jsonData = await response.json();
             setData(jsonData.text);
         } catch (error) {
