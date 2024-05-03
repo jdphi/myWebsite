@@ -5,15 +5,20 @@ function NewsAPI() {
 
     useEffect(() => {
         const apiKey = '56e41e2dd3624570960849c99a6ed5df'; // Replace with your actual API key
-        const url = `https://newsapi.org/v2/everything?q=technology&apiKey=${apiKey}`;
+        const pageSize = 3; // Limit the number of articles to 3
+        const url = `https://newsapi.org/v2/everything?q=technology&pageSize=${pageSize}&apiKey=${apiKey}`;
 
         const fetchArticles = async () => {
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                setArticles(data.articles);
-                if (data.articles.length > 0) {
-                    console.log("First article's source ID:", data.articles[0].source.id); // Accessing the id
+                if (data.status === "ok") {
+                    setArticles(data.articles);
+                    if (data.articles.length > 0) {
+                        console.log("First article's source ID:", data.articles[0].source.id); // Accessing the id
+                    }
+                } else {
+                    console.error('API error:', data.message);
                 }
             } catch (err) {
                 console.error('Failed to fetch articles:', err);

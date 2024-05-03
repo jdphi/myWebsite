@@ -21,6 +21,7 @@ def scrape():
     try:
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
+        #soup = soup.prettify()
         page_text = soup.get_text()
         return jsonify({'text': page_text})
     #When an error occurs (like failing to fetch a URL), it returns a JSON response with the error message. This also carries the CORS headers thanks to the after_request function.
